@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>新闻检索系统</title>
+  <style>
+    /* 全局重置和字体 */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; padding: 20px; }
+
+    /* 标题样式 */
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    /* 搜索区容器 */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .search-container input {
+      width: 60%;      /* 放大输入框 */
+      max-width: 600px;
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+      outline: none;
+    }
+    .search-container button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      background-color: #3498db;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #2980b9;
+    }
+
+    /* 版块标题 */
+    .section h2 {
+      font-size: 1.5rem;
+      color: #34495e;
+      margin-bottom: 10px;
+      border-left: 4px solid #3498db;
+      padding-left: 8px;
+    }
+
+    /* 文本框容器样式 */
+    .box {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 15px;
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.6;
+      max-height: 250px;
+      overflow-y: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+
+    /* 相似新闻条目卡片 */
+    .news-card {
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+    }
+    .news-card:last-child { border-bottom: none; }
+    .news-card .meta {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+      margin-bottom: 6px;
+    }
+    .news-card p {
+      margin: 0;
+      font-size: 1rem;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <h1>新闻检索系统</h1>
+  <div class="search-container">
+    <input id="query" placeholder="请输入检索文本..." />
+    <button onclick="doSearch()">搜索</button>
+  </div>
+
+  <div class="section">
+    <h2>文本分词结果</h2>
+    <div id="tokens" class="box"></div>
+  </div>
+  <div class="section">
+    <h2>前10个高频词</h2>
+    <div id="top10" class="box"></div>
+  </div>
+  <div class="section">
+    <h2>文本所属类别</h2>
+    <div id="category" class="box"></div>
+  </div>
+  <div class="section">
+    <h2>命中相似度最高的5条新闻</h2>
+    <div id="similar" class="box"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
